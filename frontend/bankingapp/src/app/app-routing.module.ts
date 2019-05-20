@@ -6,6 +6,7 @@ import { AddAccountComponent } from './components/add-account/add-account.compon
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { ViewCustomersComponent } from './components/view-customers/view-customers.component';
 import { LoginComponent } from './components/login/login.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'transfer',
+        component: TransferComponent
     }
 
 ]

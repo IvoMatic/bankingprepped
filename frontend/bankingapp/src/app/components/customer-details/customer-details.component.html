@@ -3,4 +3,5 @@
   <b>Age: </b> {{customer.age}}<br>
   <b>Address:</b> {{customer.address.street}} {{customer.address.number}}, {{customer.address.zipCode}} {{customer.address.city}}<br>
   <b>Balance: </b>${{customer.accountList[0].balance.toFixed(2)}}<br>
+  {{customer.accountList[0].iban.value}}
 </li>

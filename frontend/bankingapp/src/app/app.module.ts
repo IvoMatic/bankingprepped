@@ -12,6 +12,7 @@ import { NewCustomerComponent } from './components/new-customer/new-customer.com
 import { ViewCustomersComponent } from './components/view-customers/view-customers.component';
 import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
 import { LoginComponent } from './components/login/login.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './components/login/login.component';
     NewCustomerComponent,
     ViewCustomersComponent,
     CustomerDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    TransferComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,5 @@
+<h1>New transaction</h1>
+<input #iban1 placeholder="Sender Iban"><br>
+<input #iban2 placeholder="Receiver Iban"><br>
+<input #amount placeholder="Amount"><br>
+<button (click)='transfer(iban1.value, iban2.value, amount.value)'>Go</button>

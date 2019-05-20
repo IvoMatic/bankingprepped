@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Customer } from '../models/Customer';
 import { Observable } from 'rxjs';
+import { UpdateAccountRQ } from '../models/UpdateAccountRQ';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,9 @@ export class RestService {
 
   allCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(this.URL + '/customers');
+  }
+
+  transfer(request: UpdateAccountRQ): Observable<UpdateAccountRQ> {
+    return this.http.put<UpdateAccountRQ>(this.URL + '/update', request);
   }
 }
