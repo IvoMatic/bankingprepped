@@ -1,0 +1,16 @@
+<app-default-navbar></app-default-navbar>
+
+ <div  style="margin-left: 3%; margin-right: 65%">
+  <h1>Admin login</h1>
+ <div class="form-group">
+    <label for="exampleDropdownFormEmail2">Username</label>
+    <input class="form-control" #name placeholder="Username">
+  </div>
+  <div class="form-group">
+    <label for="exampleDropdownFormPassword2">Password</label>
+    <input type="password" class="form-control" #password placeholder="Password">
+  </div>
+  <div class="form-group">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)='adminLogin(name.value, password.value)'>Sign in</button>
+</div>

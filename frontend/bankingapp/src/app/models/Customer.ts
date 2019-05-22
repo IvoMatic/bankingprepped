@@ -1,4 +1,5 @@
 import { Address } from './Address';
+import { Account } from './Account'
 
 export class Customer {
     id: number;
@@ -7,4 +8,5 @@ export class Customer {
     age: number;
     address: Address;
     accountList: Account[];
+    password: string;
 }

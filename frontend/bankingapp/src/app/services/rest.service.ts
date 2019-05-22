@@ -22,4 +22,8 @@ export class RestService {
   transfer(request: UpdateAccountRQ): Observable<UpdateAccountRQ> {
     return this.http.put<UpdateAccountRQ>(this.URL + '/update', request);
   }
+
+  getCustomer(id: number): Observable<Customer> {
+    return this.http.get<Customer>(this.URL + '/customer/' + id);
+  }
 }

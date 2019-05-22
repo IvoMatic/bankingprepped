@@ -1,0 +1,8 @@
+<app-validation></app-validation>
+<div *ngIf = 'loggedInUser' style="margin-left: 3%">
+<app-user-navbar></app-user-navbar>
+<h1>New transaction</h1>
+ <input #iban2 placeholder="Receiver Iban"><br>
+<input #amount placeholder="Amount">$<br>
+<button (click)='transfer(iban2.value, amount.value)'>Go</button>
+</div>
