@@ -17,7 +17,6 @@ export class UserNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.loggedInUser = this.local.getCustomer('loggedInUser');
-
   }
 
   logout() {

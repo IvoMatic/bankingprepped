@@ -26,4 +26,12 @@ export class RestService {
   getCustomer(id: number): Observable<Customer> {
     return this.http.get<Customer>(this.URL + '/customer/' + id);
   }
+
+  addAccount(id: number, accountType: string): Observable<Customer> {
+    return this.http.post<Customer>(this.URL + '/addAccountFor/' + id + '/' + accountType, {});
+  }
+
+  getAccount(iban: string): Observable<Account> {
+    return this.http.get<Account>(this.URL + '/account/' + iban);
+  }
 }

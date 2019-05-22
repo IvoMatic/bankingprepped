@@ -28,6 +28,7 @@ public class Account {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Transaction> transactions;
 	
+	private String accountType;
 	
 	
 	
@@ -42,7 +43,19 @@ public class Account {
 		this.balance = exactlyTwoDecimals(faker.number().randomDouble(2, -1000, 20000));
 		this.iban = new Iban();
 		this.transactions = new ArrayList<>();
+		this.accountType = "Checking";
 	}
+	
+	public Account(String accountType) {
+		Faker faker = new Faker();
+		this.balance = exactlyTwoDecimals(faker.number().randomDouble(2, -1000, 20000));
+		this.iban = new Iban();
+		this.transactions = new ArrayList<>();
+		this.accountType = accountType;
+	}
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -70,6 +83,15 @@ public class Account {
 
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
+	}
+
+	
+	public String getAccountType() {
+		return accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 
 	@Override

@@ -10,6 +10,8 @@ import { AdminHomeComponent } from './components/adminView/admin-home/admin-home
 import { UserLoginComponent } from './components/userView/user-login/user-login.component';
 import { UserHomeComponent } from './components/userView/user-home/user-home.component';
 import { UserTransactionComponent } from './components/userView/user-transaction/user-transaction.component';
+import { AddAccountComponent } from './components/adminView/add-account/add-account.component';
+import { TransactionDetailsComponent } from './components/userView/transaction-details/transaction-details.component';
 
 const routes: Routes = [
     {
@@ -28,6 +30,10 @@ const routes: Routes = [
     {
         path: 'admin/addCustomer',
         component: NewCustomerComponent
+    },
+    {
+        path: 'admin/addAccount',
+        component: AddAccountComponent
     },
     {
         path: 'admin/allCustomers',
@@ -52,6 +58,10 @@ const routes: Routes = [
     {
         path: 'user/transaction',
         component: UserTransactionComponent
+    },
+    {
+        path: 'user/transactions',
+        component: TransactionDetailsComponent
     }
 
 ]

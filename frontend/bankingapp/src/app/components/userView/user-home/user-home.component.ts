@@ -12,15 +12,25 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class UserHomeComponent implements OnInit {
 
   loggedInUser: Customer;
-
+  totalBalance: number = 0;
+  showTransactionDetails: boolean = false;
   constructor(private local: LocalStorageService, private rest: RestService) { }
 
   ngOnInit() {
     this.loggedInUser = this.local.getCustomer('loggedInUser');
     if(this.loggedInUser){
-    this.rest.getCustomer(this.loggedInUser.id).subscribe(v => this.loggedInUser = v);
+    this.rest.getCustomer(this.loggedInUser.id).subscribe(v => {
+      this.loggedInUser = v;
+      for(let account of this.loggedInUser.accountList) {
+        this.totalBalance += account.balance;
+        console.log(this.totalBalance);
+      }
+    });
     }
   }
 
+  showTransactions() {
+    this.showTransactionDetails = !this.showTransactionDetails;
+  }
 
 }

@@ -21,6 +21,9 @@ import { UserHandlerComponent } from './components/userView/user-handler/user-ha
 import { UserTransactionComponent } from './components/userView/user-transaction/user-transaction.component';
 import { ValidationComponent } from './components/userView/validation/validation.component';
 import { AdminValidationComponent } from './components/adminView/admin-validation/admin-validation.component';
+import { AddAccountComponent } from './components/adminView/add-account/add-account.component';
+import { TransactionDetailsComponent } from './components/userView/transaction-details/transaction-details.component';
+
 
 
 @NgModule({
@@ -41,7 +44,9 @@ import { AdminValidationComponent } from './components/adminView/admin-validatio
     UserHandlerComponent,
     UserTransactionComponent,
     ValidationComponent,
-    AdminValidationComponent
+    AdminValidationComponent,
+    AddAccountComponent,
+    TransactionDetailsComponent
   ],
   imports: [
     BrowserModule,

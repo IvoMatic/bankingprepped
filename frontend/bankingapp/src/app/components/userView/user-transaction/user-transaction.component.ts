@@ -21,8 +21,7 @@ export class UserTransactionComponent implements OnInit {
     this.loggedInUser = this.local.getCustomer('loggedInUser');
   }
 
-  transfer(iban2: string, amount: number) {
-    const iban1 = this.loggedInUser.accountList[0].iban.value;
+  transfer(iban1:string, iban2: string, amount: number) {
     const request = new UpdateAccountRQ(iban1, iban2, amount);
     this.rest.transfer(request).subscribe();
     alert('Transaction successful!')

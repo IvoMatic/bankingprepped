@@ -105,4 +105,23 @@ public class MyRestController {
 	return new ResponseEntity<Customer>(customer1, HttpStatus.OK);
 	}
 	
+	@CrossOrigin(origins="*", allowedHeaders="*")
+	@PostMapping(path="addAccountFor/{id}/{accountType}")
+	public ResponseEntity<Customer> addAccount(@PathVariable Long id, @PathVariable String accountType) {
+		Customer customer = custRepo.findById(id).get();
+		customer.getAccountList().add(new Account(accountType));
+		custRepo.save(customer);
+		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "*", allowedHeaders="*")
+	@GetMapping(path="/account/{value}")
+	public ResponseEntity<Account> getAccount(@PathVariable String value) {
+		Iban iban = ibanRepo.findByValue(value).get();
+		Account account = accRepo.findByIban(iban).get();
+		return new ResponseEntity<Account>(account, HttpStatus.OK);
+		
+	}
+	
+	
 }

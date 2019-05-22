@@ -6,4 +6,5 @@ export class Account {
     balance: number;
     iban: Iban;
     transactions: Transaction[];
+    accountType: string;
 }

@@ -5,21 +5,16 @@
 <p>
   Welcome, {{loggedInUser.firstName}}!
 </p> <br>
-<b>Your balance: </b> ${{loggedInUser.accountList[0].balance.toFixed(2)}}<br><br><br>
+<b>Your total balance: </b> ${{totalBalance.toFixed(2)}}<br><br><br>
 <b>Customer details:</b><br>
 <b>Name: </b>{{loggedInUser.firstName}} {{loggedInUser.lastName}}<br>
 <b>Age: </b>{{loggedInUser.age}}<br>
 <b>Address: </b>{{loggedInUser.address.street}} {{loggedInUser.address.number}}, {{loggedInUser.address.zipCode}} {{loggedInUser.address.city}}<br>
-<b>Iban: </b>{{loggedInUser.accountList[0].iban.value}}<br>
-
+<b>Accounts: </b>
+  <div *ngFor='let account of loggedInUser.accountList' style="margin-left: 3%">
+    <b>Iban: </b>{{account.iban.value}}, 
+    <b>Type: </b>{{account.accountType}},
+    <b>Balance: </b>${{account.balance.toFixed(2)}}
+  </div>
 <br>
-<div>
-  <b>Your transactions:</b><br>
-  <ul *ngFor='let transaction of loggedInUser.accountList[0].transactions'>
-    <li><b>Date: </b>{{ transaction.date | date :'short' }}</li>
-    <li><b>Payer: </b>{{transaction.payer}}, {{transaction.payerIban}}</li>
-    <li><b>Payee: </b>{{transaction.payee}}, {{transaction.payeeIban}}</li>
-    <li><b>Amount: </b>${{transaction.amount}}</li>
-  </ul>
-</div>
 </div>
