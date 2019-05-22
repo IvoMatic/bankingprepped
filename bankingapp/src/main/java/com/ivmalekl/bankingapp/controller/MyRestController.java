@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ivmalekl.bankingapp.model.Account;
 import com.ivmalekl.bankingapp.model.Customer;
 import com.ivmalekl.bankingapp.model.Iban;
+import com.ivmalekl.bankingapp.model.Transaction;
 import com.ivmalekl.bankingapp.repositories.AccountRepository;
 import com.ivmalekl.bankingapp.repositories.CustomerRepository;
 import com.ivmalekl.bankingapp.repositories.IbanRepository;
@@ -69,17 +71,38 @@ public class MyRestController {
 		//find both accounts
 		Optional<Account> accountSender = accRepo.findByIban(ibanSender.get());
 		Optional<Account> accountReceiver = accRepo.findByIban(ibanReceiver.get());
+		//find customers
+		Customer sender = custRepo.findByAccountListContaining(accountSender);
+		Customer receiver = custRepo.findByAccountListContaining(accountReceiver);
+		
 		//deduct money from 1st account
 		accountSender.get().setBalance(accountSender.get().getBalance()-Math.abs(request.amount));
 		//add money to second account
 		accountReceiver.get().setBalance(accountReceiver.get().getBalance()+Math.abs(request.amount));
 		
+		Transaction transaction = new Transaction();
+		transaction.setAmount(request.amount);
+		transaction.setPayer(sender.getFirstName()+" "+sender.getLastName());
+		transaction.setPayee(receiver.getFirstName()+" "+receiver.getLastName());
+		transaction.setPayerIban(request.iban);
+		transaction.setPayeeIban(request.iban2);
+		
+		
+		accountSender.get().getTransactions().add(transaction);
+		accountReceiver.get().getTransactions().add(transaction);
 		accRepo.save(accountSender.get());
 		accRepo.save(accountReceiver.get());
 		
 		List<Account> allCustomers = new ArrayList<Account>();
 		
 	    return new ResponseEntity<List<Account>>(allCustomers, HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "*", allowedHeaders="*")
+	@GetMapping(path="/customer/{id}")
+	public ResponseEntity<Customer> getCustomer(@PathVariable Long id) {
+	Customer customer1 = custRepo.findById(id).get();
+	return new ResponseEntity<Customer>(customer1, HttpStatus.OK);
 	}
 	
 }

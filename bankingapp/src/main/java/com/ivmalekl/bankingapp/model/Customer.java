@@ -21,6 +21,8 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private int age;
+	private String password;
+	
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
@@ -38,6 +40,7 @@ public class Customer {
 		this.accountList.add(new Account());
 		this.address = new Address();
 		this.age = faker.number().numberBetween(18, 90);
+		this.password = faker.internet().password(8, 9);
 	}
 	public Address getAddress() {
 		return address;
@@ -74,6 +77,12 @@ public class Customer {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

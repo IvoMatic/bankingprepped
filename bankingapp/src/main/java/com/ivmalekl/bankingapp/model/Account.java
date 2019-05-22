@@ -2,12 +2,15 @@ package com.ivmalekl.bankingapp.model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.github.javafaker.Faker;
@@ -22,6 +25,11 @@ public class Account {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Iban iban;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Transaction> transactions;
+	
+	
+	
 	
 	private double exactlyTwoDecimals(double value) {
 		BigDecimal bd = new BigDecimal(value);
@@ -33,6 +41,7 @@ public class Account {
 		Faker faker = new Faker();
 		this.balance = exactlyTwoDecimals(faker.number().randomDouble(2, -1000, 20000));
 		this.iban = new Iban();
+		this.transactions = new ArrayList<>();
 	}
 	public Long getId() {
 		return id;
@@ -53,6 +62,16 @@ public class Account {
 	public void setIban(Iban iban) {
 		this.iban = iban;
 	}
+	
+	
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
 	@Override
 	public String toString() {
 		return "ID: " + id + "\n balance: " + balance + "\n iban: " + iban;
