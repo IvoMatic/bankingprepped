@@ -1,0 +1,22 @@
+<!-- <div>
+Add account:<br>
+<input #id placeholder="Customer ID">
+<button (click) = 'addSavingsAccount(id.value)'>Add savings account</button>
+<button (click) = 'addIndividualRetirementAccount(id.value)'>Add individual retirement account</button>
+<button (click) = 'addSavingsAccount(id.value)'>Add checking account</button>
+</div> -->
+<app-admin-validation></app-admin-validation>
+<div *ngIf='admin'>
+<app-navbar></app-navbar>
+<div class="dropdown"> 
+ <input class = 'form-control' #id placeholder="Customer ID"><br>
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Account type
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <button (click) = 'addCheckingAccount(id.value)' class="dropdown-item" type="button">Checking account</button>
+      <button (click) = 'addSavingsAccount(id.value)' class="dropdown-item" type="button">Savings account</button>
+      <button (click) = 'addIndividualRetirementAccount(id.value)' class="dropdown-item" type="button">Individual retirement account</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<app-validation></app-validation>
+<div *ngIf = 'loggedInUser' style="margin-left: 3%">
+<app-user-navbar></app-user-navbar>
+<h1>New transaction</h1>
+<div style="margin-right: 75%">
+    <div>
+      <select #iban1 class='form-control'>
+        <option>Choose account</option>
+        <option *ngFor = 'let account of loggedInUser.accountList'>{{account.iban.value}}</option>
+      </select>
+  </div><br>
+ <input class='form-control' #iban2 placeholder="Receiver Iban"><br>
+<input class='form-control' #amount placeholder="Amount"><br>
+</div>
+<button class="btn btn-secondary" (click)='transfer(iban1.value, iban2.value, amount.value)'>Transact</button>
+</div>

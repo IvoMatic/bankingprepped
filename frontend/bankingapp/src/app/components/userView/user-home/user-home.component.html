@@ -1,0 +1,20 @@
+<app-validation></app-validation>
+
+<div *ngIf = 'loggedInUser' style="margin-left: 3%">
+<app-user-navbar></app-user-navbar>
+<p>
+  Welcome, {{loggedInUser.firstName}}!
+</p> <br>
+<b>Your total balance: </b> ${{totalBalance.toFixed(2)}}<br><br><br>
+<b>Customer details:</b><br>
+<b>Name: </b>{{loggedInUser.firstName}} {{loggedInUser.lastName}}<br>
+<b>Age: </b>{{loggedInUser.age}}<br>
+<b>Address: </b>{{loggedInUser.address.street}} {{loggedInUser.address.number}}, {{loggedInUser.address.zipCode}} {{loggedInUser.address.city}}<br>
+<b>Accounts: </b>
+  <div *ngFor='let account of loggedInUser.accountList' style="margin-left: 3%">
+    <b>Iban: </b>{{account.iban.value}}, 
+    <b>Type: </b>{{account.accountType}},
+    <b>Balance: </b>${{account.balance.toFixed(2)}}
+  </div>
+<br>
+</div>

@@ -1,0 +1,24 @@
+<app-validation></app-validation>
+<div *ngIf = 'loggedInUser' style="margin-left: 3%">
+    <app-user-navbar></app-user-navbar>
+
+<div style="margin-right: 75%">
+    <div>
+      <select #iban1 class='form-control'>
+        <option>Choose account</option>
+        <option *ngFor = 'let account of loggedInUser.accountList'>{{account.iban.value}}</option>
+      </select>
+    </div>
+</div> <br>
+<button class="btn btn-secondary" (click)='show(iban1.value)'>Show transactions</button>
+
+<div *ngIf='showDetails'>
+    <b>Your transactions:</b><br>
+    <ul *ngFor='let transaction of chosenAccount.transactions'>
+      <li><b>Date: </b>{{ transaction.date | date :'short' }}</li>
+      <li><b>Payer: </b>{{transaction.payer}}, {{transaction.payerIban}}</li>
+      <li><b>Payee: </b>{{transaction.payee}}, {{transaction.payeeIban}}</li>
+      <li><b>Amount: </b>${{transaction.amount}}</li>
+    </ul>
+  </div>
+</div>
