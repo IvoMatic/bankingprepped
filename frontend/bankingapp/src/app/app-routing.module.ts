@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/adminView/home/home.component';
+/* import { HomeComponent } from './components/adminView/home/home.component'; */
 import { NewCustomerComponent } from './components/adminView/new-customer/new-customer.component';
 import { ViewCustomersComponent } from './components/adminView/view-customers/view-customers.component';
 import { LoginComponent } from './components/adminView/login/login.component';
@@ -12,16 +12,18 @@ import { UserHomeComponent } from './components/userView/user-home/user-home.com
 import { UserTransactionComponent } from './components/userView/user-transaction/user-transaction.component';
 import { AddAccountComponent } from './components/adminView/add-account/add-account.component';
 import { TransactionDetailsComponent } from './components/userView/transaction-details/transaction-details.component';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { ProfileComponent } from './components/userView/profile/profile.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/landingpage',
         pathMatch: 'full'
     },
     {
-        path: 'home',
-        component: HomeComponent
+        path: 'landingpage',
+        component: LandingpageComponent
     },
     {
         path: 'admin/home',
@@ -58,6 +60,10 @@ const routes: Routes = [
     {
         path: 'user/transaction',
         component: UserTransactionComponent
+    },
+    {
+        path: 'user/profile',
+        component: ProfileComponent
     },
     {
         path: 'user/transactions',

@@ -4,7 +4,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 @Component({
   selector: 'app-admin-validation',
   templateUrl: './admin-validation.component.html',
-  styleUrls: ['./admin-validation.component.css']
+  styleUrls: ['./admin-validation.component.scss']
 })
 export class AdminValidationComponent implements OnInit {
 

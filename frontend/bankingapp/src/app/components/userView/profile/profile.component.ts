@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/Customer';
-import { BehaviourService } from 'src/app/services/behaviour.service';
-import { RestService } from 'src/app/services/rest.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { RestService } from 'src/app/services/rest.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-home',
-  templateUrl: './user-home.component.html',
-  styleUrls: ['./user-home.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
-export class UserHomeComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
-  showinput: boolean = false;
-
+  
   loggedInUser: Customer;
   totalBalance: number = 0;
   showTransactionDetails: boolean = false;
@@ -41,8 +39,5 @@ export class UserHomeComponent implements OnInit {
     this.router.navigate(['/landingpage']);
   }
 
-  showInput(){
-    this.showinput = !this.showinput;
-  }
 
 }

@@ -1,8 +1,24 @@
-<app-default-navbar></app-default-navbar>
+<div class="container-fluid">
+<nav class="navbar navbar-expand">
 
- <div  style="margin-left: 3%; margin-right: 65%">
+  <a class="navbar-brand mr-1" style="color:#00AAA9" href="/landingpage">Paradise Financial Group</a>
+
+  
+</nav>
+
+<!-- SIDEBAR -->
+<ul class="sidebar navbar-nav">
+
+
+
+</ul>
+
+  <!-- MAIN CONTENT -->
+  <div class="content-wrapper">
+
+<div>
   <h1>Admin login</h1>
- <div class="form-group">
+  <div class="form-group">
     <label for="exampleDropdownFormEmail2">Username</label>
     <input class="form-control" #name placeholder="Username">
   </div>
@@ -13,4 +29,12 @@
   <div class="form-group">
   </div>
   <button type="submit" class="btn btn-primary" (click)='adminLogin(name.value, password.value)'>Sign in</button>
+</div>
+</div>
+  <!-- FOOTER-->
+  <footer class="footer">
+      <span>
+          Paradise is very nice
+      </span>
+    </footer>
 </div>

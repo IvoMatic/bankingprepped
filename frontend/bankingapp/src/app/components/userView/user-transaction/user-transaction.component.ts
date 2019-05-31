@@ -5,15 +5,16 @@ import { RestService } from 'src/app/services/rest.service';
 import { UpdateAccountRQ } from 'src/app/models/UpdateAccountRQ';
 import { Account } from 'src/app/models/Account';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-transaction',
   templateUrl: './user-transaction.component.html',
-  styleUrls: ['./user-transaction.component.css']
+  styleUrls: ['./user-transaction.component.scss']
 })
 export class UserTransactionComponent implements OnInit {
 
-  constructor(private local: LocalStorageService, private rest: RestService, private location: Location) { }
+  constructor(private local: LocalStorageService, private rest: RestService, private router : Router, private location: Location) { }
 
   loggedInUser: Customer;
 
@@ -26,6 +27,11 @@ export class UserTransactionComponent implements OnInit {
     this.rest.transfer(request).subscribe();
     alert('Transaction successful!')
     window.location.reload();
+  }
+
+  logout() {
+    this.local.clearCustomer();
+    this.router.navigate(['/landingpage']);
   }
 
 }
